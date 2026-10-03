@@ -1,0 +1,8 @@
+# What the dialog is to a desktop (PGSS Applications): installed as
+# /usr/share/apps/dev.peios.gxwi-file-dialog.toml, named for the id, by the
+# package that installs the program. It is opened by another program, which
+# wants a file chosen, so a launcher does not list it.
+title = "Choose a file"
+description = "Choose a file to open, or a place to save one"
+program = "/usr/bin/gxwi-file-dialog"
+listed = false

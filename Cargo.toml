@@ -1,0 +1,34 @@
+[package]
+name = "gxwi-file-dialog"
+version = "0.0.1"
+edition = "2024"
+license = "MIT"
+publish = false
+
+# The library is what a program that opens the dialog needs: the protocol and
+# a way to start it. It has nothing of GXWI's in it, so a program depending
+# on it with `default-features = false` gets nothing of the dialog's.
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "gxwi-file-dialog"
+path = "src/main.rs"
+required-features = ["program"]
+
+[features]
+default = ["program"]
+program = ["dep:libgxwi", "dep:libc", "dep:peios", "dep:jiff"]
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# The dialog role is not in a released libgxwi yet: until it is, the one
+# beside this checkout.
+libgxwi = { path = "../gxwi/libgxwi", optional = true }
+# What the person may do in a folder, asked of KACS. The revision libgxwi
+# pins, which it must: a program can hold only one peios-sys.
+peios = { git = "https://github.com/peios/peios-rs.git", rev = "3cf23f68d40c4adff252e28241bb3c958fba824f", package = "peios", optional = true }
+libc = { version = "0.2", optional = true }
+# When a file last changed, on this machine's clock.
+jiff = { version = "0.2.29", optional = true }

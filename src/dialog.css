@@ -1,0 +1,117 @@
+/* Made from the theme's tokens, which the desktop's page for a live surface
+   brings with it. The dialog is as big as .chooser, which says so (fx-fit). */
+html, body { height: 100%; }
+
+body {
+    margin: 0;
+    background: var(--surface-1);
+    color: var(--text-primary);
+    font: 500 13px/1.4 var(--font-text);
+    color-scheme: light dark;
+    overflow: auto;
+}
+
+#fx-root[data-connected="false"] { opacity: 0.5; }
+
+.chooser {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    width: 40rem;
+    max-width: 100vw;
+    box-sizing: border-box;
+    padding: var(--space-4);
+}
+
+header h1 { margin: 0; font-size: 16px; font-weight: 700; overflow-wrap: anywhere; }
+header p { margin: 2px 0 0; color: var(--text-muted); font-size: 12px; }
+
+button, input, select { font: inherit; }
+button {
+    height: var(--control-sm);
+    padding: 0 var(--space-3);
+    color: var(--text-primary);
+    background: var(--surface-2);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+button:hover:not(:disabled) { border-color: var(--border-strong); }
+button:disabled { color: var(--text-muted); cursor: default; opacity: 0.6; }
+button.primary { color: var(--accent-on); background: var(--accent-solid); border-color: var(--accent-solid); }
+button.danger { color: var(--danger-text); border-color: var(--danger-text); }
+button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--accent-solid); outline-offset: 1px; }
+input, select {
+    box-sizing: border-box;
+    height: var(--control-sm);
+    padding: 0 var(--space-2);
+    color: var(--text-primary);
+    background: var(--bg-sunken);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+}
+
+/* Where: up, home, and the folder's path. */
+.where { display: flex; gap: var(--space-2); margin: 0; }
+.where input { flex: 1; min-width: 0; font: 500 12px/1.4 var(--font-mono); }
+
+/* What may be done here. */
+.tools { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.tools .hidden-toggle { margin-left: auto; }
+.tools .hidden-toggle[aria-pressed="true"] { border-color: var(--accent-solid); }
+
+/* A name being typed, or a question. */
+.strip { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); margin: 0; padding: var(--space-2); background: var(--surface-2); border-radius: var(--radius-sm); }
+.strip label { display: flex; flex: 1; align-items: center; gap: var(--space-2); font-size: 12px; color: var(--text-secondary); }
+.strip label input { flex: 1; }
+.strip p { flex-basis: 100%; margin: 0; font-size: 12px; color: var(--text-secondary); }
+.said { margin: 0; font-size: 12px; color: var(--text-secondary); }
+.said.bad { color: var(--danger-text); }
+
+/* The folder's contents. */
+.entries, .empty {
+    height: 18rem;
+    margin: 0;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    background: var(--bg-sunken);
+}
+.entries { padding: var(--space-1); list-style: none; overflow-y: auto; }
+.empty { box-sizing: border-box; padding: var(--space-4); font-size: 12px; color: var(--text-muted); }
+.empty.bad { color: var(--danger-text); }
+.entries button {
+    display: grid;
+    grid-template-columns: 18px minmax(0, 1fr) 6rem 9rem;
+    gap: var(--space-2);
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 3px var(--space-2);
+    text-align: left;
+    color: var(--text-secondary);
+    background: none;
+    border: 1px solid transparent;
+    cursor: default;
+    user-select: none;
+}
+.entries button span { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.entries .name { color: var(--text-primary); }
+.entries .size, .entries .changed { font-size: 12px; color: var(--text-muted); }
+.entries .size { text-align: right; }
+.entries button:hover { background: var(--surface-2); }
+.entries button[aria-selected="true"] { background: var(--surface-2); border-color: var(--accent-solid); }
+/* A folder and a file, drawn plainly. */
+.entries .icon { width: 14px; height: 11px; border-radius: 2px; box-sizing: border-box; }
+.entries .folder .icon { background: var(--accent-solid); opacity: 0.8; }
+.entries .file .icon { width: 10px; height: 13px; margin-left: 2px; border: 1.5px solid var(--text-muted); }
+
+/* The name to save as, the kind of file, and the answer. */
+.choose { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); margin: 0; }
+.choose .name { display: flex; flex: 1; align-items: center; gap: var(--space-2); font-size: 12px; color: var(--text-secondary); }
+.choose .name input { flex: 1; min-width: 8rem; }
+.choose .buttons { display: flex; gap: var(--space-2); margin-left: auto; }
+
+@media (max-width: 520px) {
+    .entries button { grid-template-columns: 18px minmax(0, 1fr) 5rem; }
+    .entries .changed { display: none; }
+}

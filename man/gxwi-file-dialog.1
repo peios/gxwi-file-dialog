@@ -1,0 +1,36 @@
+.TH GXWI-FILE-DIALOG 1 "2026-10-03" "Peios"
+.SH NAME
+gxwi-file-dialog \- choose a file to open, or a place to save one, in a dialog on a GXWI desktop
+.SH SYNOPSIS
+.B gxwi-file-dialog
+.SH DESCRIPTION
+Opened by another program, which wants a file chosen: one to read, or a
+place and a name to write to. That program starts it as a child, on the
+desktop it is on, and the two speak over the dialog's standard input and
+output, one JSON object a line. The program's first line says whether a file
+is to be opened or saved, what the dialog is called, what the file is for,
+the folder to start in, the name to suggest, and the kinds of file to offer.
+The dialog answers once, with the path chosen or that the person cancelled,
+and ends. It never opens the file: the program does.
+.PP
+The dialog shows one folder at a time, its folders first, then its files of
+the kind chosen. Opening a folder goes into it; Up goes to the folder above,
+Home to the person's home folder, and a path typed anywhere. Hidden files
+shows names that start with a dot. To open, the person picks a file; to save,
+they type a name, which takes the extension of the kind chosen if it has
+none, and saving over a file that is there asks first.
+.PP
+It is a small file manager as well: New folder makes a folder, and Rename and
+Delete act on what is picked, a folder with everything in it, after asking.
+The dialog runs as the person, and does all this as them. What they may not
+do, it asks the system first, and offers it disabled, saying why; a folder
+they may not list says so.
+.PP
+The dialog ends when it has answered, when it is closed or cancelled (Esc),
+and when its standard input closes: when the program that opened it goes.
+.SH FILES
+.TP
+.I /usr/share/apps/dev.peios.gxwi-file-dialog.toml
+Its application declaration, not listed in a launcher.
+.SH SEE ALSO
+PSPU \(sc9, File Choosing, at learn.peios.org, which sets out the protocol.
