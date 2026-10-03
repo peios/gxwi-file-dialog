@@ -70,7 +70,7 @@ input, select {
 
 /* The folder's contents. */
 .entries, .empty {
-    height: 18rem;
+    height: 15rem;
     margin: 0;
     border: 1px solid var(--border-default);
     border-radius: var(--radius-sm);
@@ -108,7 +108,8 @@ input, select {
 /* The name to save as, the kind of file, and the answer. */
 .choose { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); margin: 0; }
 .choose .name { display: flex; flex: 1; align-items: center; gap: var(--space-2); font-size: 12px; color: var(--text-secondary); }
-.choose .name input { flex: 1; min-width: 8rem; }
+.choose .name input { flex: 1; min-width: 6rem; }
+.choose select { max-width: 12rem; }
 .choose .buttons { display: flex; gap: var(--space-2); margin-left: auto; }
 
 @media (max-width: 520px) {

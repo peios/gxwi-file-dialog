@@ -231,7 +231,10 @@ impl Chooser {
              <button type=\"button\" fx-click=\"rename\"{rename}>Rename…</button>\
              <button type=\"button\" fx-click=\"delete\"{delete}>Delete…</button>\
              <button type=\"button\" class=\"hidden-toggle\" fx-click=\"hidden\" aria-pressed=\"{hidden}\">Hidden files</button></div>",
-            new = off(self.may.add_folder, "You may not make folders here."),
+            new = match &self.entries {
+                Err(_) => off(false, "Nothing can be made in a folder that can't be listed."),
+                Ok(_) => off(self.may.add_folder, "You may not make folders here."),
+            },
             rename = pick_first(may_delete && self.may.add_file, "You may not rename this."),
             delete = pick_first(may_delete, "You may not delete this."),
             hidden = self.hidden,
@@ -571,7 +574,9 @@ mod tests {
         let dir = scratch("gone");
         let mut chooser = chooser(Mode::Open, &dir);
         chooser.go(&dir.join("nowhere"));
-        assert!(shown(&chooser).contains("<p class=\"empty bad\">There is no folder here.</p>"));
+        let html = shown(&chooser);
+        assert!(html.contains("<p class=\"empty bad\">There is no folder here.</p>"));
+        assert!(html.contains("fx-click=\"new-folder\" disabled title=\"Nothing can be made in a folder that can't be listed.\""));
         std::fs::remove_dir_all(dir).unwrap();
     }
 
