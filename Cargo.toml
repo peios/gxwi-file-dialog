@@ -28,7 +28,7 @@ serde_json = "1"
 libgxwi = { path = "../gxwi/libgxwi", optional = true }
 # What the person may do in a folder, asked of KACS. The revision libgxwi
 # pins, which it must: a program can hold only one peios-sys.
-peios = { git = "https://github.com/peios/peios-rs.git", rev = "2a2a6bb022192f6e98d4e4a6a7efdbdd40d53b35", package = "peios", optional = true }
+peios = { git = "https://github.com/peios/peios-rs.git", rev = "02c87cb643c30eef6b74cd1d9d8b0ae067bed69a", package = "peios", optional = true }
 libc = { version = "0.2", optional = true }
 # When a file last changed, on this machine's clock.
 jiff = { version = "0.2.29", optional = true }
