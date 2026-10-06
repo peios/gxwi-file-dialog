@@ -23,12 +23,12 @@ program = ["dep:libgxwi", "dep:libc", "dep:peios", "dep:jiff"]
 [dependencies]
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-# The dialog role is not in a released libgxwi yet: until it is, the one
-# beside this checkout.
-libgxwi = { path = "../gxwi/libgxwi", optional = true }
+# libgxwi as of the gxwi release dev.peios.gxwi-sdk stages, which a package
+# build takes it from (gxwi's dev/pins.toml).
+libgxwi = { git = "https://github.com/peios/gxwi.git", rev = "5629140add3de075511b3379fd690fdabd06dcaf", optional = true }
 # What the person may do in a folder, asked of KACS. The revision libgxwi
 # pins, which it must: a program can hold only one peios-sys.
-peios = { git = "https://github.com/peios/peios-rs.git", rev = "02c87cb643c30eef6b74cd1d9d8b0ae067bed69a", package = "peios", optional = true }
+peios = { git = "https://github.com/peios/peios-rs.git", rev = "f8c84930f2b71763bcf0550df0b1420a0f63b21e", package = "peios", optional = true }
 libc = { version = "0.2", optional = true }
 # When a file last changed, on this machine's clock.
 jiff = { version = "0.2.29", optional = true }
