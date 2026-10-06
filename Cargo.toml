@@ -25,7 +25,7 @@ serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 # libgxwi as of the gxwi release dev.peios.gxwi-sdk stages, which a package
 # build takes it from (gxwi's dev/pins.toml).
-libgxwi = { git = "https://github.com/peios/gxwi.git", rev = "5629140add3de075511b3379fd690fdabd06dcaf", optional = true }
+libgxwi = { git = "https://github.com/peios/gxwi.git", rev = "e9d86e56e8d79b4240ff5114434b4cdc0c5b1f76", optional = true }
 # What the person may do in a folder, asked of KACS. The revision libgxwi
 # pins, which it must: a program can hold only one peios-sys.
 peios = { git = "https://github.com/peios/peios-rs.git", rev = "f8c84930f2b71763bcf0550df0b1420a0f63b21e", package = "peios", optional = true }

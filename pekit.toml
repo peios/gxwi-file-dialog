@@ -23,7 +23,7 @@ EOF
 cargo vendor --respect-source-config --locked "$PEKIT_OUT/vendor" > "$PEKIT_OUT/cargo-config.toml"
 '''
 [build.vendor.dependencies.peipkg]
-"dev.peios.gxwi-sdk" = "= 0.0.3-1"
+"dev.peios.gxwi-sdk" = "= 0.0.5-1"
 "org.rust-lang.rust" = ">= 1.98.1"
 "com.git-scm.git" = ">= 2.55.0"
 "dev.peios.peiosutils" = "*"

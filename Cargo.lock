@@ -518,8 +518,8 @@ checksum = "ce5d3ddc6d3fa000eb1536d85e147bfe31aacaba692ed6a876f95cb7c855be78"
 
 [[package]]
 name = "libgxwi"
-version = "0.0.3"
-source = "git+https://github.com/peios/gxwi.git?rev=5629140add3de075511b3379fd690fdabd06dcaf#5629140add3de075511b3379fd690fdabd06dcaf"
+version = "0.0.5"
+source = "git+https://github.com/peios/gxwi.git?rev=e9d86e56e8d79b4240ff5114434b4cdc0c5b1f76#e9d86e56e8d79b4240ff5114434b4cdc0c5b1f76"
 dependencies = [
  "axum",
  "hyper",
